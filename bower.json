@@ -1,0 +1,19 @@
+{
+  "name": "slowking",
+  "version": "0.0.0",
+  "authors": [
+    "Leonardo Gonçalves <leonardo.goncalves.2711@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-less": "~3.2.0",
+    "zepto": "~1.1.6"
+  }
+}

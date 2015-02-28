@@ -1,0 +1,19 @@
+{
+  "name": "slowking",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "gulp": "~3.8.11",
+    "gulp-changed": "~1.1.1",
+    "gulp-imagemin": "~2.2.1",
+    "gulp-minify-css": "~0.5.0",
+    "gulp-stylus": "~2.0.1",
+    "gulp-less": "~3.0.1"
+  }
+}
