@@ -1,22 +1,26 @@
 var gulp = require('gulp'),
-    imagemin = require('gulp-imagemin'),
-    changed = require('gulp-changed'),
-    stylus = require('gulp-stylus');
+    clean = require('gulp-clean');
 
-gulp.task('stylus', function(){
-	gulp.src('./src/stylus/**/*,styl')
-	pipe.(stylus())
-	pipe(gulp.dest('./dist/css'));
+gulp.task('copy-less', function(){
+    gulp.src('./src/components/bootstrap-less/less/**/*.less')
+    .pipe(gulp.dest('src/bootstrap/less/'))
 });
 
-gulp.task('jpg', function(){
-    gulp.src('/*.jpg')
-    .pipe(changed('./dist/img'))
-    .pipe(imagemin({
-         progressive = true
-     }))
-     .pipe(gulp.dest('./dist/img'))
+gulp.task('copy-fonts', function(){
+    gulp.src('./src/components/bootstrap-less/fonts/*.{ttf,woff,eof,svg}')
+    .pipe(gulp.dest('src/bootstrap/fonts/'))
 });
 
+gulp.task('copy-js', function(){
+    gulp.src('./src/components/bootstrap-less/js/*.js')
+    .pipe(gulp.dest('src/bootstrap/js/'))
+});
+
+gulp.task('clean-bower', function(){
+    return gulp.src('./src/components/')
+    .pipe(clean({force: true}))
+});
+
+gulp.task('arrange-workflow', [ 'copy-less', 'copy-fonts', 'copy-js' ])
 
 //gulp.task('default', ['one', 'compress', 'linenos', 'sourcemaps-inline', 'sourcemaps-external']);
