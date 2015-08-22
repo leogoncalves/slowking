@@ -1,15 +1,3 @@
-/*
-    Leonardo Gonçalves
-    gulpfile for noobs
-    Onde vc que não sabia da existência dessa delicia/
-*/
-
-/*
-    Define variaveis que serão utilizadas para 
-    realizar as tarefas do gulp. Todas elas podem
-    ser instaladas com um simples npm-init
-*/
-
 var gulp       = require('gulp'),
     clean      = require('gulp-clean'),
     changed    = require('gulp-changed'),
@@ -22,23 +10,6 @@ var gulp       = require('gulp'),
     notify     = require('gulp-notify'),
     gutil      = require('gulp-util');
 
-/*
-    Aqui pode ser uma boa declarar o caminho que 
-    estamos usando nas variáveis pras tasks ficarem
-    mais legíveis. Uma coisa legal que podemos fazer, 
-    e super simples. Ficaria mais ou menos assim:
-*/
-//  var copyLess = './src/components/bootstrap-less/less/**/.less'
-    
-
-/*
-    Tarefas que serão realizadas pela gulp
-    Cada tarefa pode ser chamada individualmente
-    no terminal, digitando gulp nomeDaTarefa.
-    Exemplo: gulp copy-less irá mover toda a pasta 
-    que estiver em bootstrap-less(instalado pelo bower)
-    para a pasta bootstrap em source
-*/
 gulp.task('copy-less', function(){
     gulp.src('./src/components/bootstrap-less/less/**/*.less')
     .pipe(gulp.dest('src/bootstrap/less/'))
