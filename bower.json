@@ -13,7 +13,11 @@
     "tests"
   ],
   "dependencies": {
-    "zepto": "~1.1.6",
-    "bootstrap-sass-official": "~3.3.5"
+    "angular": "~1.4.6",
+    "bootstrap-sass-official": "~3.3.5",
+    "zepto": "~1.1.6"
+  },
+  "devDependencies": {
+    "angular": "~1.4.6"
   }
 }
