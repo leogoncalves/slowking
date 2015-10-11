@@ -7,6 +7,12 @@ app/static/scripts/vendor
 app/static/styles/vendor
 app/static/styles/bootstrap
 
+dist/
+!dist/readme.md
+!dist/images/readme.md
+!dist/js/readme.md
+!dist/css/readme.md
+!dist/fonts/readme.md
 ### Bower ###
 bower_components
 .bower-cache
