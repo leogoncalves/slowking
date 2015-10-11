@@ -12,6 +12,8 @@
     "test",
     "tests"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.5"
+  },
   "devDependencies": {}
 }
