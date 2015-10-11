@@ -1,0 +1,1 @@
+#Slowking - A boilerplate to pokemon trainer (and lazy peoples)
