@@ -2,11 +2,10 @@
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
 node_modules
 app/frontend/libs
-app/static/fonts/*
-app/static/images/*
-app/static/scripts/vendor/*
-app/static/styles/vendor/*
-!app/static/styles/scss
+app/static/fonts/bootstrap
+app/static/scripts/vendor
+app/static/styles/vendor
+app/static/styles/bootstrap
 
 ### Bower ###
 bower_components

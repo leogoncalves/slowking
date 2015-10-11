@@ -12,7 +12,7 @@ var bases = {
 
 var path = {
     images: "app/static/images/",
-    fonts: "app/static/fonts/",
+    fonts: "app/static/fonts/bootstrap/",
     scss: "app/static/styles/vendor/scss/",
     js: "app/static/scripts/vendor"
 };
