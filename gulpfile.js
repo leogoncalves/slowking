@@ -1,46 +1,54 @@
-var gulp       = require('gulp'),
-    gutil      = require('gulp-util'),
-    changed    = require('gulp-changed'),
-    imagemin   = require('gulp-imagemin'),
-    pngquant   = require('imagemin-optipng')
-    less       = require('gulp-less'),
-    concat     = require('gulp-concat'),
-    minifyCss  = require('gulp-minify-css'),
-    notify     = require('gulp-notify'),
-    uglify     = require('gulp-uglify');
+var gulp  = require('gulp'),
+    watch = require('gulp-watch'),
+    sass  = require('gulp-sass'),
+    gutil = require('gulp-util'),
+    clean = require('gulp-clean'),
+    notify = require('gulp-notify');
+    
+var bases = {
+    app: "app/",
+    dist: "dist/"
+};
 
-gulp.task('compile-less', function(){
-    gulp.src('./src/assets/less/main.less')
-    .pipe(changed('./dist/assets/css/*.{css}'))
-    .pipe(less({
-            compress: true
-        }).on('error', gutil.log))
-    .pipe(minifyCss({
-            keepBreaks: false
-        }
-        ))
-    .pipe(gulp.dest('.dist/assets/css/'))
-    .pipe(notify("Less files compiled"));
+var path = {
+    images: "app/static/images/",
+    fonts: "app/static/fonts/",
+    scss: "app/static/styles/vendor/scss/",
+    js: "app/static/scripts/vendor"
+};
+
+var srcPath = {
+    fonts: "app/frontend/libs/bootstrap-sass/assets/fonts/bootstrap/*.*",
+    scss: "app/frontend/libs/bootstrap-sass/assets/stylesheets/**/*.*",
+    js:  ["app/frontend/libs/bootstrap-sass/assets/javascripts/**/*.*",
+          "app/frontend/libs/jquery/dist/*.*"]
+};
+
+var distPath = {
+    images: "dist/images/",
+    css: "dist/css/",
+    js: "dist/js/"
+};
+
+gulp.task('clean', function(){
+    return gulp.src(bases.dist)
+    .pipe(clean());
 });
 
-gulp.task('compile-js', function(){
-    gulp.src('./src/assets/js/*.js')
-    .pipe(changed('./dist/assets/js/*.{js}'))
-    .pipe(uglify())
-    .pipe(concat('app.min.js'))
-    .pipe(gulp.dest('./dist/js/'))
-    .pipe(notify(".js files compiled"));
+gulp.task('make', function(){
+    gulp.src(srcPath.fonts)
+    // .pipe(watch('app/frontend/libs/bootstrap-sass/assets/fonts/bootstrap/*.*'))
+    .pipe(gulp.dest(path.fonts));
+
+    gulp.src(srcPath.js)
+    // .pipe(watch('app/frontend/libs/bootstrap-sass/assets/javascripts/**/*.*'))
+    .pipe(gulp.dest(path.js));
+
+    gulp.src(srcPath.scss)
+    // .pipe(watch('app/frontend/libs/bootstrap-sass/assets/stylesheets/**/*.*'))
+    .pipe(gulp.dest(path.scss));
 });
 
-gulp.task('compress-images', function(){
-    return gulp.src('./src/assets/images/*.{png,jpg}')
-    .pipe(changed('./dist/assets/images/'))
-    .pipe(pngquant({optimizationLevel: 3})())
-    .pipe(imagemin({
-        progressive: true
-    }))
-    .pipe(gulp.dest('./dist/assets/images/'))
-    .pipe(notify("Minified images"));
+gulp.task('sass', function(){
+    gulp.src("app/static/styles/scss")
 });
-
-gulp.task('compile', [ 'compile-less', 'compile-js', 'compress-images' ] );
